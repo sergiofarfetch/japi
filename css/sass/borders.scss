@@ -1,0 +1,173 @@
+@import '_variables';
+
+.farfetchLogo{
+	float: left;
+	width: 100%;
+	padding:2%;
+}
+
+.cl-right{
+	clear:right;
+}
+
+.cl-left{
+	clear:left;
+}
+
+.tr {
+float: left;
+width: 0px;
+height: 0px;
+line-height: 0px;
+border-style: solid;
+}
+
+
+
+.tr-bottomright {
+	border-color: $color-red transparent;
+	border-width: 0px 0px $border-width $border-width;
+}
+
+
+.tr-bottomleft {
+	border-color: $color-red transparent;
+	border-width: 0px $border-width $border-width 0;
+}
+
+.tr-topright {
+	border-color: $color-red transparent;
+	border-width: $border-width 0 0 $border-width;
+}
+
+.tr-topleft {
+	border-color: $color-red transparent;
+	border-width: $border-width $border-width 0 0;}
+
+
+.tr-bottomright-black{
+	@extend .tr-bottomright;
+	border-color: $color-black transparent;
+}
+
+.tr-bottomleft-beige{
+	@extend .tr-bottomleft;
+	border-color: $color-beige transparent;
+}
+
+.tr-bottomleft-black{
+	@extend .tr-bottomleft;
+	border-color: $color-black transparent;
+}
+
+.tr-topright-black {
+	@extend .tr-topright;
+	border-color: $color-black transparent;
+}
+
+.tr-topright-beige {
+	@extend .tr-topright;
+	border-color: $color-beige transparent;
+}
+
+
+.sq{
+	float: left;
+	width: $border-width;
+	height: $border-width;
+}
+
+.rc{
+	float: left;
+	width: $border-width2;
+	height: $border-width;
+}
+
+.rcv{
+	float: left;
+	width: $border-width;
+	height: $border-width2;
+}
+
+.rc90{
+	float: left;
+	width: $border-width3Small;
+	height: $border-width;
+}
+
+.rc100{
+	float: left;
+	width: $border-width3;
+	height: $border-width;
+}
+
+
+.bg-color-red{
+	background: $color-red;
+}
+
+.bg-color-black{
+	background: $color-black;
+}
+
+.bg-color-white{
+	background: $color-white;
+}
+
+.bg-color-beige{
+	background: $color-beige;
+}
+
+
+
+
+.letters {
+	float: left;
+	width: $letter-width;
+}
+
+.letterF {
+  @extend .letters;
+}
+
+
+.letterA{
+	@extend .letters;
+	margin-left: $margin-left;
+}
+
+.letterR{
+	@extend .letters;
+	margin-left: $margin-left;
+}
+
+.letterF2{
+	@extend .letters;
+	margin-left: $margin-left;
+}
+
+.letterE{
+	@extend .letters;
+	margin-left: $margin-left;
+}
+.letterT{
+	@extend .letters;
+	margin-left: $margin-left;
+}
+.letterC{
+	@extend .letters;
+	margin-left: $margin-left;
+}
+
+.letterH{
+	@extend .letters;
+	margin-left: $margin-left;
+}
+
+
+
+
+
+
+
+

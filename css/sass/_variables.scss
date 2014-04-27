@@ -1,0 +1,19 @@
+$color-black: #222;
+$color-darkGrey: #555;
+$color-mediumGrey: #aaa;
+$color-lightGrey: #ccc;
+$color-offWhite: #f0f0f0;
+$color-white: #fff;
+$color-beige: #c2a67d;
+$color-red: #fd4f57;
+$color-green: #4ffd8c;
+$color-facebook: #38579b;
+
+$varBorder :0.42px;
+$border-width: (100*$varBorder);
+$border-width2: $border-width*2;
+$border-width3: $border-width*3;
+$border-width3Small: ($border-width3 - 6);
+
+$letter-width: $border-width3+6;
+$margin-left: 1%;
