@@ -8,7 +8,7 @@ jQuery.getJSON("http://cors.io/spreadsheets.google.com/feeds/list/1PGUSst1qyFw-q
 
 var lwsls1 = parseInt(data.feed.entry[1]['gsx$qtyofstylesactive']['$t']);
 
-
+/*
 var doughnutOptions = {
     //Boolean - Whether we should show a stroke on each segment
     segmentShowStroke : true,
@@ -39,7 +39,8 @@ var doughnutOptions = {
     
     //Function - Will fire on animation completion.
     onAnimationComplete : function(){
-        alert("completed");
+        $('#legendCanvas').hide().html('lwsls - ' +lwsls).fadeIn();
+        $('#legendCanvas1').hide().html('lwsls1 - ' +lwsls1).fadeIn();
     }
 }
 
@@ -56,7 +57,7 @@ var doughnutOptions = {
             ];
 
     var myDoughnut = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(doughnutData,doughnutOptions);
-
+*/
 });
 
 

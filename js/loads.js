@@ -4,16 +4,23 @@ require.config({
         'core'          : 'req/core',
         'autocomplete'  : 'req/typeahead.bundle',
         'googleJson'    : 'api/googleJson',
-        'charts'        : 'plu/Chart.min'
+        'charts'        : 'plu/Chart.min',
+        'd3'            : 'plu/graph/d3.v3.min',
+        'nvd3'          : 'plu/graph/nv.d3.min'
+        //http://nvd3.org/livecode/index.html#codemirrorNav
     },
     shim: {
-        'core': {
-          deps: ['jquery'],
-          exports: 'Core'  //attaches "Backbone" to the window object
-        },
+        'core'      : {
+                    deps: ['nvd3','jquery'],
+                    exports: 'Core'  //attaches "Core" to the window object
+                    },
+        'nvd3'        :{
+                    deps: ['d3'],
+                    exports: 'd3'  //attaches "Backbone" to the window object
+        },  
         'googleJson': {
-          deps: ['jquery','core','charts'],
-          exports: 'GoogleJson'  //attaches "Backbone" to the window object
+          deps: ['jquery','core','d3','nvd3'],
+          exports: 'GoogleJson'  //attaches "GoogkeJson" to the window object
         }
     }
 
