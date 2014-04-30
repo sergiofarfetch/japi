@@ -2,11 +2,53 @@ try {
    
 jQuery.getJSON("http://cors.io/spreadsheets.google.com/feeds/list/1PGUSst1qyFw-qrqRcWrIMcO16l7yUUonJtrG9xoWIfg/od6/public/values?alt=json", function(data) {
   //first row "title" column
-  console.log(data);
-  //console.log(data.feed.entry[0]['gsx$semanas']['$t']);
-  var lwsls = parseInt(data.feed.entry[0]['gsx$qtyofstylesactive']['$t']);
+    console.log(data);
+    //console.log(data.feed.entry[0]['gsx$semanas']['$t']);
+    var lwsls = parseInt(data.feed.entry[0]['gsx$qtyofstylesactive']['$t']);
 
-var lwsls1 = parseInt(data.feed.entry[1]['gsx$qtyofstylesactive']['$t']);
+    var lwsls1 = parseInt(data.feed.entry[1]['gsx$qtyofstylesactive']['$t']);
+
+
+nv.addGraph(function() {
+  var chart = nv.models.discreteBarChart()
+      .x(function(d) { return d.label })    //Specify the data accessors.
+      .y(function(d) { return d.value })
+      .staggerLabels(true)    //Too many bars and not enough room? Try staggering labels.
+      .tooltips(false)        //Don't show tooltips
+      .showValues(true)       //...instead, show the bar value right on top of each bar.
+      .transitionDuration(350)
+      ;
+
+  d3.select('#legendCanvas svg')
+      .datum(exampleData())
+      .call(chart);
+
+  nv.utils.windowResize(chart.update);
+
+  return chart;
+});
+
+//Each bar represents a single discrete quantity.
+function exampleData() {
+ return  [ 
+    {
+      key: "Cumulative Return",
+      values: [
+        { 
+          "label" : "A Label" ,
+          "value" : lwsls
+        } , 
+        { 
+          "label" : "B Label" , 
+          "value" : lwsls1
+        } 
+      ]
+    }
+  ]
+
+}
+
+
 
 /*
 var doughnutOptions = {

@@ -5,26 +5,24 @@ require.config({
         'autocomplete'  : 'req/typeahead.bundle',
         'googleJson'    : 'api/googleJson',
         'charts'        : 'plu/Chart.min',
-        'd3'            : 'plu/graph/d3.v3.min',
-        'nvd3'          : 'plu/graph/nv.d3.min'
+        'd3'            : 'plu/graph/d3.v3',
+        'nvd3'          : 'plu/graph/nv.d3'
         //http://nvd3.org/livecode/index.html#codemirrorNav
     },
     shim: {
-        'core'      : {
-                    deps: ['nvd3','jquery'],
-                    exports: 'Core'  //attaches "Core" to the window object
-                    },
-        'nvd3'        :{
-                    deps: ['d3'],
-                    exports: 'd3'  //attaches "Backbone" to the window object
-        },  
+        d3: { exports: 'd3' },
+        nvd3: {
+          exports: 'nv',
+          deps: ['d3']
+        },
         'googleJson': {
-          deps: ['jquery','core','d3','nvd3'],
+          deps: ['d3','nvd3','jquery','core'],
           exports: 'GoogleJson'  //attaches "GoogkeJson" to the window object
         }
     }
 
 });
+
 
 require(['core'],function() {
     z.m.debug('Loaded Core - require(["core"])');
@@ -36,9 +34,12 @@ require(['core'],function() {
 });
 
 
+require(['d3'], function () {
+    require(['nvd3'],function() {
+        require(['googleJson'],function($) {
+            z.m.debug('Loaded googleJson - require(["googleJson"])');
 
-define(['googleJson'],function($) {
-    z.m.debug('Loaded googleJson - require(["googleJson"])');
-
+        });
+    });
 });
 
