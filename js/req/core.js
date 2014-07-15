@@ -124,7 +124,7 @@ try {
             console.log(data2.photos.photo[0]);
 
             japi.variables.weatherCityImage = 
-            'https://farm'+data2.photos.photo[0].farm+'.staticflickr.com/'+data2.photos.photo[0].server+'/'+data2.photos.photo[0].id+'_'+data2.photos.photo[0].secret+'.jpg';
+            'https://farm'+data2.photos.photo[0].farm+'.staticflickr.com/'+data2.photos.photo[0].server+'/'+data2.photos.photo[0].id+'_'+data2.photos.photo[0].secret+'_b.jpg';
 
             document.getElementsByClassName('bg')[0].src = japi.variables.weatherCityImage;
 
