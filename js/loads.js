@@ -1,3 +1,5 @@
+/*global require, define, japi, $*/
+
 require.config({
     paths: {
         'jquery'        : 'jquery-2.1.0',
@@ -18,15 +20,43 @@ require.config({
         'googleJson': {
           deps: ['d3','nvd3','jquery','core'],
           exports: 'GoogleJson'  //attaches "GoogkeJson" to the window object
+        },
+        'essential': {
+            deps:['jquery','core'],
+            exports: 'essential'
         }
     }
 
 });
 
 
-require(['core'],function() {
-    z.m.debug('Loaded Core - require(["core"])');
-    z.m.init();
+
+define('essential', function (require) {
+    'use strict';
+    var dependency1 = require('core'),
+        dependency2 = require('jquery');
+        
+    return function () {
+        japi.methods.debug('Dependency 1 - require(["core"])' + dependency1);
+        japi.methods.debug('Dependency 2 - require(["jquery"])' + dependency2);
+    };
+});
+
+/*
+define('essential', function(){
+    var dep = require(['core']);
+        dep2 = require(['jquery']);
+
+    return function(){
+        z.m.debug('Loaded Core - require(["core"])');
+    };
+});
+*/
+
+require(['essential'],function() {
+    'use strict';
+    japi.methods.debug('Essential Loaded - require(["essential"])');
+    japi.methods.init();
     //This function will be called when all the dependencies
     //listed above are loaded. Note that this function could
     //be called before the page is loaded.
@@ -35,11 +65,13 @@ require(['core'],function() {
 
 
 require(['d3'], function () {
-    require(['nvd3'],function() {
-        require(['googleJson'],function($) {
-            z.m.debug('Loaded googleJson - require(["googleJson"])');
-
+    'use strict';
+    /*require(['nvd3'],function() {
+        require(['googleJson'],function() {
+            japi.methods.debug('Loaded googleJson - require(["googleJson"])');
         });
-    });
+    });*/
 });
+
+
 

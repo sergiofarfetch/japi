@@ -1,3 +1,15 @@
+
+$color-green: #16a085;
+$color-black : #000;
+$color-blue: #2980b9;
+$color-grey: #f23456;
+$color-orange: #d35400;
+$color-yellow: #f1c40f;
+
+
+
+
+/*COLORS*/
 $color-black: #222;
 $color-darkGrey: #555;
 $color-mediumGrey: #aaa;
@@ -9,6 +21,8 @@ $color-red: #fd4f57;
 $color-green: #4ffd8c;
 $color-facebook: #38579b;
 
+
+/*LOGO FARFETCH - done in CSS*/
 $varBorder :0.42px;
 $border-width: (100*$varBorder);
 $border-width2: $border-width*2;
@@ -17,3 +31,4 @@ $border-width3Small: ($border-width3 - 6);
 
 $letter-width: $border-width3+6;
 $margin-left: 1%;
+
