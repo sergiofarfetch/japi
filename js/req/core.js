@@ -1,4 +1,4 @@
-/*global require, define, japi, $, ffbrowser, console, Modernizr, document,Element */
+/*global require, define, japi, $, ffbrowser, console, Modernizr, document,Element, Firebase */
 /*jslint browser: true*/
 /*jslint plusplus: true */
 
@@ -86,9 +86,30 @@ try {
         japi.methods.weatherFormSubmit();
 
     };
+
+
+    japi.variables.firebase =  new Firebase('https://wk0s5wwnvif.firebaseio-demo.com/');
+
+
     japi.variables.icon = [];
     japi.variables.icon['01d'] = 'wi-day-sunny';
     japi.variables.icon['01n'] = 'wi-night-clear';
+    japi.variables.icon['02d'] = 'wi-day-cloudy';
+    japi.variables.icon['02n'] = 'wi-night-cloudy';
+    japi.variables.icon['03d'] = 'wi-cloud';
+    japi.variables.icon['03n'] = 'wi-cloud';
+    japi.variables.icon['04d'] = 'wi-cloudy';
+    japi.variables.icon['04n'] = 'wi-cloudy';
+    japi.variables.icon['09d'] = 'wi-showers';
+    japi.variables.icon['09n'] = 'wi-showers';
+    japi.variables.icon['10d'] = 'wi-day-showers';
+    japi.variables.icon['10n'] = 'wi-night-alt-showers';
+    japi.variables.icon['11d'] = 'wi-thunderstorm';
+    japi.variables.icon['11n'] = 'wi-thunderstorm';
+    japi.variables.icon['13d'] = 'wi-snow';
+    japi.variables.icon['13n'] = 'wi-snow';
+    japi.variables.icon['50d'] = 'wi-windy';
+    japi.variables.icon['50n'] = 'wi-windy';
 
     japi.variables.yahoo = '7fea1f52bc82ae6ffb2341f9c13a61ad';
 
@@ -116,8 +137,9 @@ try {
 
          
 
-        var s = new XMLHttpRequest();
-        s.open('GET', 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=7fea1f52bc82ae6ffb2341f9c13a61ad&format=json&nojsoncallback=1&text='+japi.variables.weatherCity+'', true);
+        var s = new XMLHttpRequest(),
+            r = new XMLHttpRequest();
+        s.open('GET', 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=7fea1f52bc82ae6ffb2341f9c13a61ad&format=json&nojsoncallback=1&text='+japi.variables.weatherCity, true);
         s.onreadystatechange = function () {
           if (s.readyState !== 4 || s.status !== 200) {return;}
             var data2 = JSON.parse(s.responseText);
@@ -135,7 +157,7 @@ try {
 
         
 
-        var r = new XMLHttpRequest();
+        
         r.open('GET', 'http://api.openweathermap.org/data/2.5/find?q='+japi.variables.weatherCity+'&APPID=4e9c53b0f20ac1daeb60e58ce6a3bfb0', true);
         r.onreadystatechange = function () {
           if (r.readyState !== 4 || r.status !== 200) {return;}
@@ -151,6 +173,8 @@ try {
             console.log(japi.variables.icon);
             console.log(japi.variables.weather.weather[0].icon);
 
+            japi.variables.weatherIcon[0].className = 'icon-for-weather wi';
+            
             japi.methods.addClass(japi.variables.weatherIcon[0], japi.variables.icon[japi.variables.weather.weather[0].icon]);
             
             
@@ -158,7 +182,7 @@ try {
         };
         r.send();
 
-        
+        japi.variables.firebase.push({search : japi.variables.weatherCity});
         
     };
 
