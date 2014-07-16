@@ -8,7 +8,8 @@ require.config({
         'googleJson'    : 'api/googleJson',
         'charts'        : 'plu/Chart.min',
         'd3'            : 'plu/graph/d3.v3',
-        'nvd3'          : 'plu/graph/nv.d3'
+        'nvd3'          : 'plu/graph/nv.d3',
+        'firebase'      : 'https://cdn.firebase.com/js/client/1.0.17/firebase'
         //http://nvd3.org/livecode/index.html#codemirrorNav
     },
     shim: {
@@ -17,12 +18,16 @@ require.config({
           exports: 'nv',
           deps: ['d3']
         },
+        core:{
+            deps:['firebase'],
+            exports: 'core'
+        },
         'googleJson': {
           deps: ['d3','nvd3','jquery','core'],
           exports: 'GoogleJson'  //attaches "GoogkeJson" to the window object
         },
         'essential': {
-            deps:['jquery','core'],
+            deps:['jquery','core','firebase'],
             exports: 'essential'
         }
     }
@@ -34,11 +39,13 @@ require.config({
 define('essential', function (require) {
     'use strict';
     var dependency1 = require('core'),
-        dependency2 = require('jquery');
+        dependency2 = require('jquery'),
+        dependency3 = require('firebase');
         
     return function () {
         japi.methods.debug('Dependency 1 - require(["core"])' + dependency1);
         japi.methods.debug('Dependency 2 - require(["jquery"])' + dependency2);
+        japi.methods.debug('Dependency 3 - require(["firebase"])' + dependency3);
     };
 });
 
@@ -63,15 +70,15 @@ require(['essential'],function() {
     //This callback is optional.
 });
 
-
+/*
 require(['d3'], function () {
     'use strict';
-    /*require(['nvd3'],function() {
+    require(['nvd3'],function() {
         require(['googleJson'],function() {
             japi.methods.debug('Loaded googleJson - require(["googleJson"])');
         });
-    });*/
-});
+    });
+});*/
 
 
 
